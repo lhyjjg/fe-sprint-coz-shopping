@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Main from './pages/Main';
 import ProductList from './pages/ProductList';
 import BookmarkList from './pages/BookmarkList';
+import Footer from './components/Footer';
 
 import { createGlobalStyle } from 'styled-components';
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/productList' element={ <ProductList />}/>
         <Route path='/bookmarkList' element={ <BookmarkList />}/>
       </Routes>
+      <Footer />
     </Router>
   );
 }

@@ -1,0 +1,47 @@
+[33mcommit 91379723996f417ec580a7251fbcf436fd8e7381[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: lhyjjg <leehyun147@gmail.com>
+Date:   Mon May 15 03:36:59 2023 +0900
+
+    Footer update
+
+[33mcommit 6dd1daac26ebc9cf01dcd58a1af527ee1b240f37[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 32a0f848 ba78d31d
+Author: hyeonyoungLee <120166543+lhyjjg@users.noreply.github.com>
+Date:   Mon May 15 12:59:57 2023 +0900
+
+    Merge pull request #2 from lhyjjg/hyeonyoung/header-update
+    
+    header-update
+
+[33mcommit ba78d31df282915b3a73ecc273036bffa01acd1d[m[33m ([m[1;31morigin/hyeonyoung/header-update[m[33m)[m
+Author: lhyjjg <leehyun147@gmail.com>
+Date:   Sun May 14 17:30:10 2023 +0900
+
+    update
+
+[33mcommit 32a0f8481665091aba2442b71739f5a058155473[m
+Merge: a37cec4c 6ab32044
+Author: hyeonyoungLee <120166543+lhyjjg@users.noreply.github.com>
+Date:   Sun May 14 16:59:00 2023 +0900
+
+    Merge pull request #1 from lhyjjg/hyeonyoung
+    
+    feat: create project
+
+[33mcommit 6ab32044833b1987f45814b2d9bf17c80d579059[m[33m ([m[1;31morigin/hyeonyoung/update[m[33m, [m[1;31morigin/hyeonyoung/footer-update[m[33m, [m[1;32mhyeonyoung/update[m[33m)[m
+Author: lhyjjg <leehyun147@gmail.com>
+Date:   Sun May 14 16:55:28 2023 +0900
+
+    feat: create project
+
+[33mcommit a37cec4c1a00128aa1d4b35b53da2b7a40964c42[m
+Author: 정해림 <maestro@haerimjeong.local>
+Date:   Thu May 11 16:42:01 2023 +0900
+
+    README.md modified
+
+[33mcommit 128920fb37bf50d310d286e6306d950fdb263973[m
+Author: yoonie-codestates <120527734+yoonie-codestates@users.noreply.github.com>
+Date:   Wed May 10 21:43:05 2023 -0700
+
+    Initial commit
