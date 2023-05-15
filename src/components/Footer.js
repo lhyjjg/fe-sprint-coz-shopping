@@ -11,6 +11,8 @@ const FooterContainer = styled.footer`
 const FooterText = styled.div `
   text-align: center;
   color: #888888;
+  font-size: 12px;
+  position: relative;
 `
 
 function Footer () {
