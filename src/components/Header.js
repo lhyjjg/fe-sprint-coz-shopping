@@ -16,6 +16,8 @@ const HeaderContainer = styled.div `
   justify-content: space-between;
   align-items: center;
   padding: 25px 76px;
+  background-color: white;
+  z-index: 10;
 `
 
 const Title = styled.div `
@@ -57,6 +59,7 @@ const HambugerMenu = styled.ul `
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
     border: 0.5px solid rgba(0, 0, 0, 0.1);
   }
 `

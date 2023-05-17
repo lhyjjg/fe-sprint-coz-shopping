@@ -6,6 +6,7 @@ const FooterContainer = styled.footer`
   position: fixed;
   bottom: 0;
   width: 100%;
+  background-color: white;
 `
 
 const FooterText = styled.div `
