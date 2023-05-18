@@ -10,6 +10,7 @@ const MainContainer = styled.main `
 
 function Main () {
   const [data, setData] = useState([]);
+  const [showBookmarks, setShowBookmarks] = useState(false);
 
   useEffect(() => {
     axios
@@ -25,9 +26,10 @@ function Main () {
   
   return (
     <MainContainer>
-      <h1>상품 리스트</h1>
-      <Item data = {displayedData}></Item>
-      <h1>북마크 리스트</h1>
+      <h2>상품 리스트</h2>
+      <Item data={displayedData}></Item>
+      <h2>북마크 리스트</h2>
+      <Item data={data} showBookmarks={true} />
     </MainContainer>
   )
 }

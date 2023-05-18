@@ -21,7 +21,7 @@ function ProductList () {
       })
       .catch((error) => console.log(error));
   }, []);
-  
+
   return (
     <ProductContainer>
       <TypeNav></TypeNav>
