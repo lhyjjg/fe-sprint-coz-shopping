@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
+
+import Modal from "./Modal";
 
 import { TiStarFullOutline } from 'react-icons/ti'
 
@@ -23,15 +25,15 @@ const ItemImgUrl = styled.img `
   border-radius: 12px;
 `
 
-const StyledTiStarFullOutline = styled(TiStarFullOutline)`
+const BookmarkStar = styled(TiStarFullOutline)`
   width: 23px;
   height: 23px;
-  color: #D9D9D9;
+  color: ${({isActive}) => (isActive ? "#FFD361" : "#D9D9D9")};
   position: absolute;
   bottom: 10px;
   right: 10px;
 `
-const ItemDiscriptionFist = styled.div `
+const ItemDescriptionFist = styled.div `
   display: flex;
   justify-content: space-between;
 `
@@ -45,7 +47,7 @@ const ItemFollowerDiscount = styled.div `
   color: ${({ isDiscount }) => (isDiscount ? "#452CDD" : "inherit")};
 `
 
-const ItemDiscriptionSecond = styled.div `
+const ItemDescriptionSecond = styled.div `
   display: flex;
   justify-content: space-between;
 `
@@ -55,17 +57,61 @@ const ItemFollowerPrice = styled.div `
 `
 
 
-const Item = ({data}) => {
+const Item = ({data, showBookmarks}) => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [modalImageUrl, setModalImageUrl] = useState("");
+  const [modalTitle, setModalTitle] = useState("");
+  const [activeStar, setActiveStar] = useState([]);
+  const [savedItems, setSavedItems] = useState([]);
+
+  useEffect(() => {
+    const savedItemsString = localStorage.getItem("savedItems");
+    if (savedItemsString) {
+      setSavedItems(JSON.parse(savedItemsString));
+      setActiveStar(JSON.parse(savedItemsString));
+    }
+  }, []);
+
+  const openModal = (imageUrl, title) => {
+    setModalOpen(true);
+    setModalImageUrl(imageUrl);
+    setModalTitle(title);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
   
+  const handleStarClick = (productId) => {
+    setActiveStar((preActiveItems) => {
+      if (preActiveItems.includes(productId)) {
+        const updatedItems = preActiveItems.filter((id) => id !== productId);
+        setSavedItems(updatedItems);
+      } else {
+        const updatedItems = [...preActiveItems, productId];
+        setSavedItems(updatedItems);
+      }
+      localStorage.setItem("savedItems", JSON.stringify(savedItems));
+      return [...savedItems];
+    });
+  };
+
+  const filteredData = showBookmarks ? data.filter((product) => savedItems.includes(product.id)) : data;
+
   return (
     <ItemContainer>
-      {data.map((product) => (
+      {filteredData.map((product) => (
         <ItemBox key={product.id}>
           <ItemImg>
-            <ItemImgUrl src={product.brand_image_url === null ? product.image_url : product.brand_image_url} />
-            <StyledTiStarFullOutline />
+            <ItemImgUrl 
+              src={product.brand_image_url === null ?
+              product.image_url : product.brand_image_url}
+              onClick={() => openModal(product.brand_image_url === null ?
+              product.image_url : product.brand_image_url, product.title)} />
+            <BookmarkStar isActive={activeStar.includes(product.id)}
+             onClick={() => handleStarClick(product.id)}/>
           </ItemImg>
-          <ItemDiscriptionFist>
+          <ItemDescriptionFist>
             <ITemTitle>
               {product.title}
             </ITemTitle>
@@ -75,9 +121,9 @@ const Item = ({data}) => {
                 product.discountPercentage !== null 
                 ? `${product.discountPercentage}%` : ""}
             </ItemFollowerDiscount>
-          </ItemDiscriptionFist>
+          </ItemDescriptionFist>
 
-          <ItemDiscriptionSecond>
+          <ItemDescriptionSecond>
             <ItemSubTitle>{product.sub_title}</ItemSubTitle>
             <ItemFollowerPrice>
               {product.follower > 0 
@@ -85,9 +131,16 @@ const Item = ({data}) => {
                 product.price !== null 
                 ? `${Number(product.price).toLocaleString()}원` : ""}
             </ItemFollowerPrice>
-          </ItemDiscriptionSecond>
+          </ItemDescriptionSecond>
         </ItemBox>
       ))}
+      <Modal 
+        isModalOpen = {isModalOpen}
+        imageUrl = {modalImageUrl}
+        title = {modalTitle} 
+        closeModal = {closeModal}
+        bookmarkStar={<BookmarkStar isActive={activeStar.includes(modalTitle)} onClick={() => handleStarClick(modalTitle)} />}
+        ></Modal>
     </ItemContainer>
   );
 };

@@ -4,6 +4,10 @@ import Main from './pages/Main';
 import ProductList from './pages/ProductList';
 import BookmarkList from './pages/BookmarkList';
 import Footer from './components/Footer';
+import TypeProduct from './components/TypeProduct';
+import TypeCategory from './components/TypeCategory'
+import TypeExhibition from './components/TypeExhibition';
+import TypeBrand from './components/TypeBrand';
 
 import { createGlobalStyle } from 'styled-components';
 
@@ -22,6 +26,10 @@ function App() {
         <Route path='/' element={<Main />} />
         <Route path='/productList' element={ <ProductList />}/>
         <Route path='/bookmarkList' element={ <BookmarkList />}/>
+        <Route path='/TypeProduct' element={ <TypeProduct />}/>
+        <Route path='/TypeCategory' element={ <TypeCategory />}/>
+        <Route path='/TypeExhibition' element={ <TypeExhibition />}/>
+        <Route path='/TypeBrand' element={ <TypeBrand />}/>
       </Routes>
       <Footer />
     </Router>
