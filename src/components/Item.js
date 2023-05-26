@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
 
 import Modal from "./Modal";
+import Toast from "./Toast";
 
 import { TiStarFullOutline } from 'react-icons/ti'
 
 const ItemContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: row;
 `
 
 const ItemBox = styled.div `
@@ -18,6 +19,7 @@ const ItemImg = styled.div `
   width: 264px;
   height: 210px;
   position: relative;
+  margin: 0 53px 6px 0;
 `
 const ItemImgUrl = styled.img `
   width: 100%;
@@ -36,6 +38,7 @@ const BookmarkStar = styled(TiStarFullOutline)`
 const ItemDescriptionFist = styled.div `
   display: flex;
   justify-content: space-between;
+  margin-right: 53px;
 `
 const ITemTitle = styled.div `
   font-size: 16px;
@@ -50,6 +53,7 @@ const ItemFollowerDiscount = styled.div `
 const ItemDescriptionSecond = styled.div `
   display: flex;
   justify-content: space-between;
+  margin-right: 53px;
 `
 const ItemSubTitle = styled.div `
 `
@@ -141,6 +145,9 @@ const Item = ({data, showBookmarks}) => {
         closeModal = {closeModal}
         bookmarkStar={<BookmarkStar isActive={activeStar.includes(modalTitle)} onClick={() => handleStarClick(modalTitle)} />}
         ></Modal>
+      <Toast
+        bookmarkStar={true}
+      ></Toast>
     </ItemContainer>
   );
 };
